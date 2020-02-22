@@ -1,0 +1,7 @@
+{
+  "public": true,
+  "version": 2,
+  "github": {
+    "autoJobCancelation": false
+  }
+}
