@@ -21,8 +21,9 @@ const url: any = {
 let BASEURL = url.dev
 
 export function setApiServer() {
-  const l = createLogger()
-  if (window.location.host.indexOf('localhost') === 0) {
+  const logger = createLogger().addTags('setApiServer')
+  logger.verbose('window.location.host =', window.location.host)
+  if (window.location.host.includes('localhost')) {
     BASEURL = url.local
   }
   const isProd = [
@@ -36,10 +37,11 @@ export function setApiServer() {
   }
 
   const queryParam = getQueryParams(window.location.href)
+  logger.verbose('queryParam.api =', queryParam.api)
   if (queryParam.api) {
     BASEURL = url[queryParam.api]
   }
-  l.info('api-server: ' + BASEURL)
+  logger.info('api-server: ' + BASEURL)
 }
 
 export async function req(query: any, variables = {}) {
