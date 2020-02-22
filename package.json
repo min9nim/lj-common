@@ -16,8 +16,6 @@
     "url": "git+https://github.com/min9nim/lj-common.git"
   },
   "dependencies": {
-    "@sentry/browser": "^5.9.1",
-    "@sentry/integrations": "^5.8.0",
     "@vue/composition-api": "latest",
     "axios": "^0.19.0",
     "core-js": "^3.3.2",
