@@ -1,5 +1,8 @@
-# little-jesus-code
-git push -u origin master
+# lj-code
+
+common component of `Code` for little-jesus
+
+<br>
 
 ## Project setup
 
@@ -37,28 +40,6 @@ yarn run test
 
 ```
 yarn run lint
-```
-
-<br>
-
-### dynamic select of api server
-
-prod
-
-```
-https://~~~/?api=prod
-```
-
-dev
-
-```
-https://~~~/?api=dev
-```
-
-local
-
-```
-https://~~~/?api=local
 ```
 
 <br>
