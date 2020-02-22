@@ -9,7 +9,7 @@ export const logger = createLogger().addTags('common')
 
 export function initSentry(Vue) {
   if (!isProd()) {
-    logger.addTags('initSentry').warn('dev')
+    logger.addTags('initSentry').info('dev')
     return
   }
   const {
@@ -20,7 +20,7 @@ export function initSentry(Vue) {
     dsn: VUE_APP_SENTRY_DSN,
     integrations: [new Integrations.Vue({Vue, attachProps: true, logErrors: true})],
   })
-  logger.addTags('initSentry').warn('Sentry initialized')
+  logger.addTags('initSentry').info('Sentry initialized')
 }
 
 const url: any = {
