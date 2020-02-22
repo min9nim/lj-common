@@ -22,6 +22,19 @@ let BASEURL = url.dev
 
 export function setApiServer() {
   const l = createLogger()
+  if (window.location.host.indexOf('localhost') === 0) {
+    BASEURL = url.local
+  }
+  const isProd = [
+    'little-jesus-code.now.sh',
+    'little-jesus-2020.now.sh',
+    'little-jesus-admin-2020.now.sh',
+  ].includes(window.location.host)
+
+  if (isProd) {
+    BASEURL = url.prod2020
+  }
+
   const queryParam = getQueryParams(window.location.href)
   if (queryParam.api) {
     BASEURL = url[queryParam.api]
@@ -69,11 +82,3 @@ export const removeBy = pred => {
     return remove(index, 1)(list)
   }
 }
-
-// export const updateById = curry((id, tobe, list) => {
-//   return updateBy(idEqual(id))(tobe)(list)
-// })
-
-// export const removeById = curry((id, list) => {
-//   return removeBy(idEqual(id))(list)
-// })
