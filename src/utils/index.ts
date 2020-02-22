@@ -3,7 +3,7 @@ import {print} from 'graphql/language/printer'
 import {getQueryParams} from 'mingutils'
 import {path} from 'ramda'
 import createLogger from 'if-logger'
-import {pipe, propEq, curry, findIndex, remove, update, find} from 'ramda'
+import {pipe, propEq, curry, findIndex, remove, update, find, complement, filter} from 'ramda'
 
 const url: any = {
   // 2019년 prod 백엔드
@@ -76,9 +76,24 @@ export const updateBy = curry((pred, tobe) => {
   }
 })
 
+export const updateById = curry((id, tobe, list) => {
+  return updateBy(idEqual(id))(tobe)(list)
+})
+
 export const removeBy = pred => {
   return list => {
     const index = findIndex(pred)(list)
     return remove(index, 1)(list)
   }
 }
+
+export const removeById = curry((id, list) => {
+  return removeBy(idEqual(id))(list)
+})
+
+export const exclude = pipe<any, any, any>(
+  complement,
+  filter,
+)
+
+export const errMsg = e => (Array.isArray(e) ? e[0].message : e.message)

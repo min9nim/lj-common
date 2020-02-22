@@ -1,13 +1,13 @@
 {
   "name": "@mgsong/lj-common",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/lj.common.js",
   "author": "min9nim@gmail.com",
   "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --target lib --name lj src/index.js",
+    "build:lib": "vue-cli-service build --target lib --name lj src/index.ts",
     "test": "mocha -r test/mocha.env -r ts-node/register -p tsconfig.mocha.json -r tsconfig-paths/register test/**/*.spec.ts test/**/**/*.spec.ts",
     "lint": "vue-cli-service lint"
   },
