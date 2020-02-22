@@ -22,9 +22,12 @@ let BASEURL = url.dev
 
 export function setApiServer() {
   const logger = createLogger().addTags('setApiServer')
-  logger.verbose('window.location.host =', window.location.host)
+  // logger.verbose('window.location.host =', window.location.host)
   if (window.location.host.includes('localhost')) {
     BASEURL = url.local
+  }
+  if (['little-jesus.now.sh', 'little-jesus-admin.now.sh'].includes(window.location.host)) {
+    BASEURL = url.prod
   }
   const isProd = [
     'little-jesus-code.now.sh',
@@ -37,7 +40,7 @@ export function setApiServer() {
   }
 
   const queryParam = getQueryParams(window.location.href)
-  logger.verbose('queryParam.api =', queryParam.api)
+  // logger.verbose('queryParam.api =', queryParam.api)
   if (queryParam.api) {
     BASEURL = url[queryParam.api]
   }
