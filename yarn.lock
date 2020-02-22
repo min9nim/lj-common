@@ -6719,11 +6719,6 @@ mocha@^6.2.2:
     yargs-parser "13.1.1"
     yargs-unparser "1.6.0"
 
-moment@^2.24.0:
-  version "2.24.0"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
-  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -9548,11 +9543,6 @@ swap-case@^1.1.0:
   dependencies:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
-
-sweetalert2@^9.7.2:
-  version "9.7.2"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.7.2.tgz#ad11a75e765b543792b032c27a5ab981a7c8429e"
-  integrity sha512-VmFmigf+rO20t5fOql21wIZlk60B8M02kXwPLmMA2qaBcVwvDQA+qGXuqtXipx1wsztTOiXgyDiBvdbHbIvQpw==
 
 sync-exec@^0.6.2:
   version "0.6.2"
