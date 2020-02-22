@@ -1,6 +1,6 @@
 {
   "name": "lj-code",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "main": "dist/code.common.js",
   "author": "min9nim@gmail.com",
@@ -11,6 +11,10 @@
     "build:lib": "vue-cli-service build --target lib --name code src/index.js",
     "test": "mocha -r test/mocha.env -r ts-node/register -p tsconfig.mocha.json -r tsconfig-paths/register test/**/*.spec.ts test/**/**/*.spec.ts",
     "lint": "vue-cli-service lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/min9nim/lj-code.git"
   },
   "dependencies": {
     "@sentry/browser": "^5.9.1",
