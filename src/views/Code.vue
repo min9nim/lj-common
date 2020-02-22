@@ -24,7 +24,6 @@ import {createComponent, onMounted, watch} from '@vue/composition-api'
 import {remove, equals, propEq, eqProps, clone, find} from 'ramda'
 import {exclude} from 'mingutils'
 import useIntervalCall from 'interval-call'
-// import {IStudent} from '../biz/type'
 import {reactive} from '@vue/composition-api'
 import {req} from '../utils'
 import {qUpdateStudent} from '../biz/query'
@@ -61,10 +60,6 @@ export default {
     handleStudentNameConfirm: intervalCall(async function(student) {
       const l = logger.addTags('useHandleStudentNameConfirm')
       try {
-        // if (!student.no) {
-        //   student.editable = false
-        //   return
-        // }
         const originalStudent = go(this.originalStudents, find(propEq('_id', student._id)))
         l.verbose(originalStudent.no, student.no)
         if (originalStudent.no === student.no) {
@@ -105,7 +100,7 @@ export default {
   },
   watch: {
     students(newValue, oldValue) {
-      logger.addTags('watch').debug(newValue, oldValue)
+      // logger.addTags('watch').debug(newValue, oldValue)
       this.originalStudents = clone(this.students)
       this.studentList = clone(this.students)
     },
