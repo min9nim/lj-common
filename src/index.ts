@@ -1,7 +1,5 @@
 import VCode from './views/Code.vue'
 import {
-  setApiServer,
-  req,
   removeBy,
   _idAscending,
   nameAscending,
@@ -14,6 +12,7 @@ import {
   exclude,
   errMsg,
 } from './utils'
+import {setApiServer, initSentry, req, isProd} from './biz'
 // export * from './utils'  // 이렇게는 처리가 안 됨
 
 export {
@@ -30,4 +29,6 @@ export {
   removeById,
   exclude,
   errMsg,
+  isProd,
+  initSentry,
 }

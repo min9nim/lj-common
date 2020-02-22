@@ -1,6 +1,6 @@
 {
   "name": "@mgsong/lj-common",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/lj.common.js",
   "author": "min9nim@gmail.com",
   "license": "MIT",
@@ -16,6 +16,8 @@
     "url": "git+https://github.com/min9nim/lj-common.git"
   },
   "dependencies": {
+    "@sentry/browser": "^5.12.4",
+    "@sentry/integrations": "^5.12.4",
     "@vue/composition-api": "latest",
     "axios": "^0.19.0",
     "core-js": "^3.3.2",
