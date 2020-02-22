@@ -9,7 +9,7 @@
 <script lang="ts">
 import {reactive, onMounted, onBeforeMount} from '@vue/composition-api'
 import Vue from 'vue'
-import {req} from './utils'
+import {req} from './biz'
 import {qStudents, qUpdateStudent} from './biz/query'
 import createLogger from 'if-logger'
 import {codeMap} from './biz/codeMap'
