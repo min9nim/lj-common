@@ -47,7 +47,7 @@ export default {
       if (root.$route.query.codeSet === 'true') {
         root.$store.state.students.forEach(student => {
           const matched = Object.entries(codeMap).find(([key, value]) => value === student.name)
-          l.info(student.name, student._id, matched && matched[0])
+          logger.addTags('onBeforeMount').info(student.name, student._id, matched && matched[0])
           if (matched) {
             req(qUpdateStudent, {_id: student._id, no: matched[0]})
           }
