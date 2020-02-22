@@ -1,8 +1,6 @@
-import VCode from './views/Index.vue'
-import VueCompositionApi from '@vue/composition-api'
+import VCode from './views/Code.vue'
 
 const install = Vue => {
-  Vue.use(VueCompositionApi)
   Vue.component(VCode.name, VCode)
 }
 

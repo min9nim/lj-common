@@ -36,10 +36,12 @@ export default {
       const result = await req(qStudents)
       const sortedList = sort(nameAscending, result.students)
       l.debug('result.students', sortedList)
-      root.$store.commit(
-        'setStudents',
-        sortedList.map(student => ({...student, editable: false, loading: false})),
-      )
+
+      const studentList = sortedList.map(student => ({...student, editable: false, loading: false}))
+
+      root.$store.commit('setStudents', studentList)
+
+      // console.log(JSON.stringify(studentList, null, 2))
 
       // 코드값 초기화
       if (root.$route.query.codeSet === 'true') {

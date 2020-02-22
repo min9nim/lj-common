@@ -54,13 +54,11 @@ export default {
       // @ts-ignore
       logger.addTags('useHandleStudentClick').debug(student)
       student.editable = true
-      this.$refs[student._id][0].$refs.input.focus()
-      // Vue.nextTick(() => {
-      //   // console.log(refs, student._id, refs[student._id])
-      //   this.$refs[student._id][0].$refs.input.focus()
-      // })
+      Vue.nextTick(() => {
+        this.$refs[student._id][0].$refs.input.focus()
+      })
     },
-    handleStudentNameConfirmasync: intervalCall(async student => {
+    handleStudentNameConfirm: intervalCall(async function(student) {
       const l = logger.addTags('useHandleStudentNameConfirm')
       try {
         // if (!student.no) {
@@ -99,7 +97,7 @@ export default {
         })
         student.editable = false
       } catch (e) {
-        this.loading = false
+        student.loading = false
         console.error(e)
         MessageBox.alert(e.message, {type: 'warning'})
       }
