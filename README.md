@@ -1,6 +1,6 @@
-# lj-code
+# lj-common
 
-common component of `Code` for little-jesus
+common modules for little-jesus
 
 <br>
 
