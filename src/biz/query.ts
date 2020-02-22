@@ -1,26 +1,11 @@
 import gql from 'graphql-tag'
 
 export const qStudents = gql`
-  {
+  query students {
     students {
       _id
       name
       no
-    }
-  }
-`
-
-export const qCheckAttendance = gql`
-  mutation checkAttendance($owner: ObjectId!, $date: String!) {
-    checkAttendance(owner: $owner, date: $date) {
-      _id
-      owner
-      date
-      items {
-        type
-        value
-      }
-      etc
     }
   }
 `
