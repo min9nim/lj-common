@@ -1,13 +1,10 @@
 <template lang="pug">
-v-code(:students="$store.state.students")
+div hello world
 </template>
 
 <script>
-import VCode from './Code.vue'
-
 export default {
   name: 'v-index',
-  components: {VCode},
 }
 </script>
 <style scoped lang="stylus"></style>

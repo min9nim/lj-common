@@ -2,7 +2,8 @@
 #app
   #nav
     el-tabs(v-model="state.activeName" @tab-click="handleClick")
-      el-tab-pane(label="코드매핑" name="/")
+      el-tab-pane(label="메인" name="/")
+      el-tab-pane(label="코드매핑" name="/code")
   router-view  
 </template>
 <script lang="ts">
@@ -31,11 +32,10 @@ export default {
       activeName: location.pathname,
     })
     onBeforeMount(async () => {
-      const l = logger.addTags('onBeforeMount')
-      l.info('start')
+      logger.addTags('onBeforeMount').info('start')
       const result = await req(qStudents)
       const sortedList = sort(nameAscending, result.students)
-      l.debug('result.students', sortedList)
+      // l.debug('result.students', sortedList)
 
       const studentList = sortedList.map(student => ({...student, editable: false, loading: false}))
 

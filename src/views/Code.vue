@@ -38,7 +38,12 @@ const intervalCall = useIntervalCall(1000)
 
 export default {
   name: 'v-code',
-  props: ['students'],
+  props: {
+    students: {
+      type: Array,
+      required: true,
+    },
+  },
   data() {
     return {
       studentList: [],
@@ -99,11 +104,22 @@ export default {
     }),
   },
   watch: {
-    students(newValue, oldValue) {
-      // logger.addTags('watch').debug(newValue, oldValue)
-      this.originalStudents = clone(this.students)
-      this.studentList = clone(this.students)
+    students: {
+      deep: true,
+      handler(newValue, oldValue) {
+        // logger.addTags('watch').debug(newValue, oldValue)
+        if (this.studentList.length === 0) {
+          logger.addTags('watch').verbose('studentList.length is 0')
+          this.originalStudents = clone(this.students)
+          this.studentList = clone(this.students)
+        }
+      },
     },
+  },
+  mounted() {
+    logger.addTags('mounted').debug('call')
+    this.originalStudents = clone(this.students)
+    this.studentList = clone(this.students)
   },
 }
 </script>
