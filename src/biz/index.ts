@@ -9,7 +9,7 @@ export const logger = createLogger().addTags('common')
 
 export function initSentry(Vue) {
   if (!isProd()) {
-    logger.addTags('initSentry').info('dev')
+    logger.addTags('initSentry').info('[dev] Sentry is not initialized')
     return
   }
   const {
