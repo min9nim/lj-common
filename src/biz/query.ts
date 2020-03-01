@@ -19,3 +19,14 @@ export const qUpdateStudent = gql`
     }
   }
 `
+
+export const qSchema = gql`
+  query __schema {
+    __schema {
+      types {
+        name
+        description
+      }
+    }
+  }
+`
