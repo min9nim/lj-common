@@ -4,6 +4,7 @@ import createLogger from 'if-logger'
 import {getQueryParams} from 'mingutils'
 import axios from 'axios'
 import {print} from 'graphql/language/printer'
+import gql from 'graphql-tag'
 
 export const logger = createLogger().addTags('common')
 
@@ -63,7 +64,7 @@ export function setApiServer() {
 let reqCount = 0
 
 export async function req(query: any, variables = {}) {
-  const logger2 = logger.addTags('req', String(reqCount))
+  const logger2 = logger.addTags('req', queryName(print(query)), String(reqCount))
   reqCount++
   logger2.verbose('start')
   logger2.verbose.time('end:')
@@ -83,4 +84,47 @@ export function isProd() {
     'little-jesus-admin-2020.now.sh',
   ]
   return prodHosts.includes(window.location.host)
+}
+
+export function getQueryName(req) {
+  if (!req.body) {
+    return
+  }
+  // if(req.body.operationName){
+  //   return req.body.operationName
+  // }
+  if (!req.body.query) {
+    return
+  }
+  return queryName(req.body.query)
+}
+
+export function queryName(query: string) {
+  try {
+    const parsed: any = gql(query)
+    if (parsed) {
+      // logger.debug('parsed:', parsed.definitions)
+      const name = parsed.definitions[0].name
+      if (name) {
+        return name.value
+      }
+    }
+  } catch (e) {
+    logger.warn(e)
+  }
+
+  // eslint-disable-next-line no-useless-escape
+  const regexp = /{\n?([^\({]+)[{\(]/i
+  const result = query.match(regexp)
+  if (!result) {
+    logger.warn('Failed to find queryName in query')
+    logger.warn('req.body.query:', query)
+    return
+  }
+  const queryName = result[1].trim()
+  const arr = queryName.split(':')
+  if (arr[1]) {
+    return arr[1].trim()
+  }
+  return queryName
 }
