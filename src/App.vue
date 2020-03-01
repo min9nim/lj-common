@@ -15,7 +15,7 @@ import createLogger from 'if-logger'
 import {codeMap} from './biz/codeMap'
 import {go} from 'mingutils'
 import {prop, find, propEq, sort} from 'ramda'
-import {checkLocalSever} from './biz'
+import {checkLocalServer} from './biz'
 
 const logger = createLogger({tags: ['App.vue']})
 
