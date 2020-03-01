@@ -45,8 +45,8 @@ const url: any = {
 }
 let BASEURL = url.dev
 
-export async function checkLocalSever() {
-  const logger2 = logger.addTags('checkLocalSever')
+export async function checkLocalServer() {
+  const logger2 = logger.addTags('checkLocalServer')
   try {
     await req(qSchema)
   } catch (e) {
