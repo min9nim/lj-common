@@ -1,5 +1,6 @@
 import {path} from 'ramda'
-import {pipe, propEq, curry, findIndex, remove, update, find, complement, filter} from 'ramda'
+// import {pipe, propEq, curry, findIndex, remove, update, find, complement, filter} from 'ramda'
+export * from 'mingutils'
 
 export function ascending(path: any) {
   return (a: any, b: any) => {
@@ -12,38 +13,38 @@ export function ascending(path: any) {
 export const _idAscending = ascending(path(['_id']))
 export const nameAscending = ascending(path(['name']))
 
-export const idEqual = propEq('_id')
+// export const idEqual = propEq('_id')
 
-export const findById = pipe(
-  idEqual,
-  find,
-)
+// export const findById = pipe(
+//   idEqual,
+//   find,
+// )
 
-export const updateBy = curry((pred, tobe) => {
-  return list => {
-    const index = findIndex(pred)(list)
-    return update(index, tobe)(list)
-  }
-})
+// export const updateBy = curry((pred, tobe) => {
+//   return list => {
+//     const index = findIndex(pred)(list)
+//     return update(index, tobe)(list)
+//   }
+// })
 
-export const updateById = curry((id, tobe, list) => {
-  return updateBy(idEqual(id))(tobe)(list)
-})
+// export const updateById = curry((id, tobe, list) => {
+//   return updateBy(idEqual(id))(tobe)(list)
+// })
 
-export const removeBy = pred => {
-  return list => {
-    const index = findIndex(pred)(list)
-    return remove(index, 1)(list)
-  }
-}
+// export const removeBy = pred => {
+//   return list => {
+//     const index = findIndex(pred)(list)
+//     return remove(index, 1)(list)
+//   }
+// }
 
-export const removeById = curry((id, list) => {
-  return removeBy(idEqual(id))(list)
-})
+// export const removeById = curry((id, list) => {
+//   return removeBy(idEqual(id))(list)
+// })
 
-export const exclude = pipe<any, any, any>(
-  complement,
-  filter,
-)
+// export const exclude = pipe<any, any, any>(
+//   complement,
+//   filter,
+// )
 
 export const errMsg = e => (Array.isArray(e) ? e[0].message : e.message)
