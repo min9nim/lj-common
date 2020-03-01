@@ -109,7 +109,7 @@ export default {
       handler(newValue, oldValue) {
         // logger.addTags('watch').debug(newValue, oldValue)
         if (this.studentList.length === 0) {
-          logger.addTags('watch').verbose('studentList.length is 0')
+          // logger.addTags('watch').verbose('studentList.length is 0')
           this.originalStudents = clone(this.students)
           this.studentList = clone(this.students)
         }
@@ -117,7 +117,7 @@ export default {
     },
   },
   mounted() {
-    logger.addTags('mounted').debug('call')
+    // logger.addTags('mounted').debug('call')
     this.originalStudents = clone(this.students)
     this.studentList = clone(this.students)
   },
