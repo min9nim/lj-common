@@ -15,6 +15,7 @@ import createLogger from 'if-logger'
 import {codeMap} from './biz/codeMap'
 import {go} from 'mingutils'
 import {prop, find, propEq, sort} from 'ramda'
+import {checkLocalSever} from './biz'
 
 const logger = createLogger({tags: ['App.vue']})
 
@@ -32,6 +33,7 @@ export default {
       activeName: location.pathname,
     })
     onBeforeMount(async () => {
+      await checkLocalSever()
       logger.addTags('onBeforeMount').info('start')
       const result = await req(qStudents)
       const sortedList = sort(nameAscending, result.students)

@@ -46,10 +46,13 @@ const url: any = {
 let BASEURL = url.dev
 
 export async function checkLocalSever() {
+  const logger2 = logger.addTags('checkLocalSever')
   try {
     await req(qSchema)
   } catch (e) {
+    logger2.warn('local api server is disable. so connect to dev server')
     BASEURL = url.dev
+    logger2.info('api-server: ' + BASEURL)
   }
 }
 
