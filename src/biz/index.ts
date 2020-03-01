@@ -9,7 +9,7 @@ export const logger = createLogger().addTags('common')
 
 export function initSentry(Vue) {
   if (!isProd()) {
-    logger.addTags('initSentry').info('[dev] Sentry is not initialized')
+    logger.addTags('initSentry').debug('[dev] Sentry is not initialized')
     return
   }
   const {
@@ -60,9 +60,16 @@ export function setApiServer() {
   logger.info('api-server: ' + BASEURL)
 }
 
+let reqCount = 0
+
 export async function req(query: any, variables = {}) {
+  const logger2 = logger.addTags('req', String(reqCount))
+  reqCount++
+  logger2.verbose('start')
+  logger2.verbose.time('end:')
   let config = {headers: {'Content-Type': 'application/json'}}
   const result = await axios.post(BASEURL, {query: print(query), variables}, config)
+  logger2.verbose.timeEnd('end:')
   if (result.data.errors) {
     throw result.data.errors
   }

@@ -24,7 +24,7 @@
     "element-ui": "^2.12.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
-    "if-logger": "0.8.4",
+    "if-logger": "0.10.2",
     "interval-call": "^0.1.0",
     "mingutils": "0.0.10",
     "mocha": "^6.2.2",
