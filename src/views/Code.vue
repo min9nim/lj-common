@@ -20,14 +20,15 @@
 </template>
 
 <script>
-import {createComponent, onMounted, watch} from '@vue/composition-api'
+import {createComponent, reactive, onMounted, watch} from '@vue/composition-api'
 import {remove, equals, propEq, eqProps, clone, find} from 'ramda'
 import {exclude} from 'mingutils'
 import useIntervalCall from 'interval-call'
-import {reactive} from '@vue/composition-api'
 import {req} from '../biz'
 import {qUpdateStudent} from '../biz/query'
-import {MessageBox, Notification} from 'element-ui'
+// import {MessageBox, Notification} from 'element-ui'
+import MessageBox from 'element-ui/lib/message-box'
+import Notification from 'element-ui/lib/notification'
 import createLogger from 'if-logger'
 import {go} from 'mingutils'
 import Vue from 'vue'
