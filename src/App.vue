@@ -33,7 +33,7 @@ export default {
       activeName: location.pathname,
     })
     onBeforeMount(async () => {
-      await checkLocalSever()
+      await checkLocalServer()
       logger.addTags('onBeforeMount').info('start')
       const result = await req(qStudents)
       const sortedList = sort(nameAscending, result.students)
