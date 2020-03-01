@@ -12,7 +12,7 @@ import {
   exclude,
   errMsg,
 } from './utils'
-import {setApiServer, initSentry, req, isProd} from './biz'
+import {setApiServer, initSentry, req, isProd, checkLocalSever} from './biz'
 // export * from './utils'  // 이렇게는 처리가 안 됨
 
 export {
@@ -31,4 +31,5 @@ export {
   errMsg,
   isProd,
   initSentry,
+  checkLocalSever,
 }
