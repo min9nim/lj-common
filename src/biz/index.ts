@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 import createLogger from 'if-logger'
-import {getQueryParams} from 'mingutils'
+import {getQueryParams, onlyOneInvoke} from 'mingutils'
 import axios from 'axios'
 import {print} from 'graphql/language/printer'
 import gql from 'graphql-tag'
@@ -86,7 +86,7 @@ export async function req(query: any, variables = {}) {
   return result.data.data
 }
 
-export async function checkServerAndReplace() {
+export const checkServerAndReplace = onlyOneInvoke(async () => {
   const logger2 = logger.addTags('checkServerAndReplace')
   try {
     await axios.post(
@@ -100,7 +100,7 @@ export async function checkServerAndReplace() {
     logger2.info('api-server: ' + BASEURL)
     return
   }
-}
+})
 
 export function isProd() {
   const prodHosts = [
