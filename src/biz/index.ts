@@ -45,17 +45,6 @@ const url: any = {
 }
 let BASEURL = url.dev
 
-export async function checkLocalServer() {
-  const logger2 = logger.addTags('checkLocalServer')
-  try {
-    await req(qSchema)
-  } catch (e) {
-    logger2.warn('local api server is disable. so connect to dev server')
-    BASEURL = url.dev
-    logger2.info('api-server: ' + BASEURL)
-  }
-}
-
 export function setApiServer() {
   const logger = createLogger().addTags('setApiServer')
   // logger.verbose('window.location.host =', window.location.host)
@@ -81,6 +70,9 @@ export function setApiServer() {
 let reqCount = 0
 
 export async function req(query: any, variables = {}) {
+  if (BASEURL === url.local) {
+    await checkLocalServer()
+  }
   const logger2 = logger.addTags('req', queryName(print(query)), String(reqCount))
   reqCount++
   logger2.verbose('start')
@@ -92,6 +84,17 @@ export async function req(query: any, variables = {}) {
     throw result.data.errors
   }
   return result.data.data
+}
+
+export async function checkLocalServer() {
+  const logger2 = logger.addTags('checkLocalServer')
+  try {
+    await req(qSchema)
+  } catch (e) {
+    logger2.warn('local api server is disable. so connect to dev server')
+    BASEURL = url.dev
+    logger2.info('api-server: ' + BASEURL)
+  }
 }
 
 export function isProd() {
