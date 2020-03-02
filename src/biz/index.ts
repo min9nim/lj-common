@@ -71,7 +71,7 @@ let reqCount = 0
 
 export async function req(query: any, variables = {}) {
   if (BASEURL === url.local) {
-    await checkLocalServer()
+    await checkServerAndReplace()
   }
   const logger2 = logger.addTags('req', queryName(print(query)), String(reqCount))
   reqCount++
@@ -86,14 +86,19 @@ export async function req(query: any, variables = {}) {
   return result.data.data
 }
 
-export async function checkLocalServer() {
-  const logger2 = logger.addTags('checkLocalServer')
+export async function checkServerAndReplace() {
+  const logger2 = logger.addTags('checkServerAndReplace')
   try {
-    await req(qSchema)
+    await axios.post(
+      BASEURL,
+      {query: print(qSchema)},
+      {headers: {'Content-Type': 'application/json'}},
+    )
   } catch (e) {
-    logger2.warn('local api server is disable. so connect to dev server')
+    logger2.warn('api server is disable. so connect to dev server')
     BASEURL = url.dev
     logger2.info('api-server: ' + BASEURL)
+    return
   }
 }
 
