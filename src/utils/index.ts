@@ -1,5 +1,7 @@
-import path from 'ramda/es/path'
+// import path from 'ramda/es/path'
+import {path} from 'ramda'
 // import {pipe, propEq, curry, findIndex, remove, update, find, complement, filter} from 'ramda'
+
 export * from 'mingutils'
 
 export function ascending(path: any) {
