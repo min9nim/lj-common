@@ -1,4 +1,4 @@
-import {path} from 'ramda'
+import path from 'ramda/es/path'
 // import {pipe, propEq, curry, findIndex, remove, update, find, complement, filter} from 'ramda'
 export * from 'mingutils'
 
