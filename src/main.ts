@@ -6,6 +6,7 @@ import VueCompositionApi from '@vue/composition-api'
 import Input from 'element-ui/lib/input'
 import Tag from 'element-ui/lib/tag'
 import Tabs from 'element-ui/lib/tabs'
+import Loading from 'element-ui/lib/loading'
 import TabPane from 'element-ui/lib/tab-pane'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
@@ -20,6 +21,7 @@ Vue.use(Input)
 Vue.use(Tag)
 Vue.use(Tabs)
 Vue.use(TabPane)
+Vue.use(Loading)
 
 new Vue({
   router,
