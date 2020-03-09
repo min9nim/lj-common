@@ -1,6 +1,6 @@
 {
   "name": "@mgsong/lj-common",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "main": "dist/lj.common.js",
   "author": "min9nim@gmail.com",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "element-ui": "^2.12.0",
     "graphql": "^14.5.8",
     "graphql-tag": "^2.10.1",
-    "if-logger": "0.10.2",
+    "if-logger": "0.11.2",
     "interval-call": "^0.1.0",
     "mingutils": "0.2.0",
     "mocha": "^6.2.2",

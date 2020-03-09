@@ -5280,10 +5280,10 @@ ieee754@^1.1.4:
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.13.tgz#ec168558e95aa181fd87d37f55c32bbcb6708b84"
   integrity sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==
 
-if-logger@0.10.2:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/if-logger/-/if-logger-0.10.2.tgz#aeb69fd6645dbca44591fbe57dabc2a1336a829d"
-  integrity sha512-JWbts3um+XnmiLM2TRUI1ZCg7DBplOJ9JDPIrhmK2FqE7hrni5VXTpCKX6K2GrtSCTd1cNKfrswkD65E9DTSXg==
+if-logger@0.11.2:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/if-logger/-/if-logger-0.11.2.tgz#b24eb0bf2d73b4fa68d4872f968bcfe4f6a8b587"
+  integrity sha512-LR7cbSzni5wTb7s14EXhzyDxCY/Ee4HdlEbf6zHfGVKx+L9h3gB7VLaLLOUOmTCXPOzoQBGtWk9vdhVyf2DuVw==
 
 iferr@^0.1.5:
   version "0.1.5"

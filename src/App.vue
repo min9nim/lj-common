@@ -16,7 +16,7 @@ import {codeMap} from './biz/codeMap'
 import {go} from 'mingutils'
 import {prop, find, propEq, sort} from 'ramda'
 
-const logger = createLogger({tags: ['App.vue']})
+let logger = createLogger({tags: ['App.vue']})
 
 function nameAscending(a: any, b: any) {
   if (a.name > b.name) return 1
@@ -32,7 +32,8 @@ export default {
       activeName: location.pathname,
     })
     onBeforeMount(async () => {
-      logger.addTags('onBeforeMount').info('start')
+      logger = logger.addTags('onBeforeMount')
+      logger.info(m => console.log(...m('start', 'hello')))
       const result = await req(qStudents)
       const sortedList = sort(nameAscending, result.students)
       // l.debug('result.students', sortedList)
@@ -47,7 +48,7 @@ export default {
       if (root.$route.query.codeSet === 'true') {
         root.$store.state.students.forEach(student => {
           const matched = Object.entries(codeMap).find(([key, value]) => value === student.name)
-          logger.addTags('onBeforeMount').info(student.name, student._id, matched && matched[0])
+          logger.info(m => console.log(...m(student.name, student._id, matched && matched[0])))
           if (matched) {
             req(qUpdateStudent, {_id: student._id, no: matched[0]})
           }

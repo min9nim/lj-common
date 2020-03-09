@@ -12,6 +12,7 @@ import {
   exclude,
   errMsg,
 } from './utils'
+import createLogger from 'if-logger'
 import {setApiServer, initSentry, req, isProd, checkLocalServer} from './biz'
 // export * from './utils'  // 이렇게는 처리가 안 됨
 
@@ -32,4 +33,5 @@ export {
   isProd,
   initSentry,
   checkLocalServer,
+  createLogger,
 }
