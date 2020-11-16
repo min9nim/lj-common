@@ -4,17 +4,15 @@
     el-tabs(v-model="state.activeName" @tab-click="handleClick")
       el-tab-pane(label="메인" name="/")
       el-tab-pane(label="코드매핑" name="/code")
-  router-view  
+  router-view
 </template>
 <script lang="ts">
-import {reactive, onMounted, onBeforeMount} from '@vue/composition-api'
-import Vue from 'vue'
+import {onBeforeMount, reactive} from '@vue/composition-api'
 import {req} from './biz'
 import {qStudents, qUpdateStudent} from './biz/query'
 import createLogger from 'if-logger'
 import {codeMap} from './biz/codeMap'
-import {go} from 'mingutils'
-import {prop, find, propEq, sort} from 'ramda'
+import {sort} from 'ramda'
 
 let logger = createLogger({tags: ['App.vue']})
 
