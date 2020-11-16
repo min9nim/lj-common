@@ -34,7 +34,7 @@ const url: any = {
 
   // 2020년 prod 백엔드
   // prod2020: 'https://little-jesus-api-git-lj2020.min1.now.sh',
-  prod2020: 'little-jesus-api-2020.now.sh',
+  prod2020: 'little-jesus-api.now.sh',
 
   // 개발서버
   // dev: 'https://little-jesus-api-git-develop.min1.now.sh',
