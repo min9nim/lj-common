@@ -30,11 +30,11 @@ const url: any = {
   prod: 'https://little-jesus-api.now.sh',
 
   // 2019년 prod 백엔드
-  prod2019: 'little-jesus-api-2019.now.sh',
+  prod2019: 'https://little-jesus-api-2019.now.sh',
 
   // 2020년 prod 백엔드
   // prod2020: 'https://little-jesus-api-git-lj2020.min1.now.sh',
-  prod2020: 'little-jesus-api.now.sh',
+  prod2020: 'https://little-jesus-api.now.sh',
 
   // 개발서버
   // dev: 'https://little-jesus-api-git-develop.min1.now.sh',
@@ -60,7 +60,7 @@ export function setApiServer() {
   }
 
   const queryParam = getQueryParams(window.location.href)
-  // logger.verbose('queryParam.api =', queryParam.api)
+  logger.verbose('queryParam.api =', queryParam.api)
   if (queryParam.api) {
     BASEURL = url[queryParam.api]
   }
