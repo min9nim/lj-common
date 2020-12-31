@@ -100,6 +100,8 @@ export function isProd() {
     'little-jesus-code.now.sh',
     'little-jesus-2020.now.sh',
     'little-jesus-admin-2020.now.sh',
+    'little-jesus-2021.now.sh',
+    'little-jesus-admin-2021.now.sh',
   ]
   return prodHosts.includes(window.location.host)
 }
