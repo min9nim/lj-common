@@ -6631,10 +6631,10 @@ mimic-fn@^2.0.0, mimic-fn@^2.1.0:
   resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
   integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
 
-mingutils@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/mingutils/-/mingutils-0.2.0.tgz#ab4bdc262f1f2da7e5c68867e83754e240244edf"
-  integrity sha512-bY9CEOXcOLNyTm1HRJu0NDpOyJJyV77vOj06BoM7j3GIfuZhQ4LsKXOfaccq37Kefun8lq0bsBRNQn2Rx9ktbQ==
+mingutils@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/mingutils/-/mingutils-0.6.0.tgz#5c0cfe0df0a52ebd0ea029a3274ad36eb7332ee1"
+  integrity sha512-JSAf1/2iGoJHFHlsVz9LVbs9a4haahvg0qYCnfXsDFWa/kZejB/5PN4kyv5Ig/Hk2PI2SO5RCnHxN1IOhcvrrA==
   dependencies:
     ramda "^0.26.1"
 
