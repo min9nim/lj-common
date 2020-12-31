@@ -1,6 +1,6 @@
 {
   "name": "@mgsong/lj-common",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "dist/lj.common.js",
   "author": "min9nim@gmail.com",
   "license": "MIT",
@@ -8,6 +8,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:lib": "vue-cli-service build --target lib --name lj src/index.ts",
+    "deploy": "yarn build:lib && npm publish",
     "test": "mocha -r test/mocha.env -r ts-node/register -p tsconfig.mocha.json -r tsconfig-paths/register test/**/*.spec.ts test/**/**/*.spec.ts",
     "reformat": "prettier --write",
     "lint": "vue-cli-service lint"
