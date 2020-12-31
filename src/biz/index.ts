@@ -40,6 +40,7 @@ export function setApiServer() {
   // logger.verbose('queryParam.api =', queryParam.api)
 
   BASEURL = oneOf([
+    [queryParam.api, url[queryParam.api]],
     [window.location.host.includes('localhost'), url.local],
     [
       [
@@ -53,7 +54,6 @@ export function setApiServer() {
       ['little-jesus-2021.now.sh', 'little-jesus-admin-2021.now.sh'].includes(window.location.host),
       url.prod2021,
     ],
-    [queryParam.api, url[queryParam.api]],
     [true, url.dev],
   ])
 
