@@ -9,6 +9,7 @@
     "build": "vue-cli-service build",
     "build:lib": "vue-cli-service build --target lib --name lj src/index.ts",
     "test": "mocha -r test/mocha.env -r ts-node/register -p tsconfig.mocha.json -r tsconfig-paths/register test/**/*.spec.ts test/**/**/*.spec.ts",
+    "reformat": "prettier --write",
     "lint": "vue-cli-service lint"
   },
   "repository": {
