@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 import createLogger from 'if-logger'
-import {getQueryParams, onlyOneInvoke} from 'mingutils'
+import {getQueryParams, onlyOneInvoke, oneOf} from 'mingutils'
 import axios from 'axios'
 import {print} from 'graphql/language/printer'
 import gql from 'graphql-tag'
@@ -31,35 +31,32 @@ const url: any = {
   dev: 'https://little-jesus-api-git-develop.min1.now.sh',
   local: 'http://localhost:5050',
 }
-let BASEURL = url.dev
 
+let BASEURL = url.dev
 export function setApiServer() {
   const logger = createLogger().addTags('setApiServer')
   // logger.verbose('window.location.host =', window.location.host)
-  if (window.location.host.includes('localhost')) {
-    BASEURL = url.local
-  }
-  if (
-    [
-      'little-jesus-code.now.sh',
-      'little-jesus-2020.now.sh',
-      'little-jesus-admin-2020.now.sh',
-    ].includes(window.location.host)
-  ) {
-    BASEURL = url.prod2020
-  }
-
-  if (
-    ['little-jesus-2021.now.sh', 'little-jesus-admin-2021.now.sh'].includes(window.location.host)
-  ) {
-    BASEURL = url.prod2021
-  }
-
   const queryParam = getQueryParams(window.location.href)
-  logger.verbose('queryParam.api =', queryParam.api)
-  if (queryParam.api) {
-    BASEURL = url[queryParam.api]
-  }
+  // logger.verbose('queryParam.api =', queryParam.api)
+
+  BASEURL = oneOf([
+    [window.location.host.includes('localhost'), url.local],
+    [
+      [
+        'little-jesus-code.now.sh',
+        'little-jesus-2020.now.sh',
+        'little-jesus-admin-2020.now.sh',
+      ].includes(window.location.host),
+      url.prod2020,
+    ],
+    [
+      ['little-jesus-2021.now.sh', 'little-jesus-admin-2021.now.sh'].includes(window.location.host),
+      url.prod2021,
+    ],
+    [queryParam.api, url[queryParam.api]],
+    [true, url.dev],
+  ])
+
   logger.info('api-server: ' + BASEURL)
 }
 
