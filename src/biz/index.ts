@@ -26,21 +26,9 @@ export function initSentry(Vue) {
 }
 
 const url: any = {
-  // 운영서버(master)
-  prod: 'https://little-jesus-api.now.sh',
-
-  // 2019년 prod 백엔드
-  prod2019: 'https://little-jesus-api-2019.now.sh',
-
-  // 2020년 prod 백엔드
-  // prod2020: 'https://little-jesus-api-git-lj2020.min1.now.sh',
-  prod2020: 'https://little-jesus-api.now.sh',
-
-  // 개발서버
-  // dev: 'https://little-jesus-api-git-develop.min1.now.sh',
-  dev: 'https://little-jesus-api-dev.now.sh',
-
-  // 로컬서버
+  prod2020: 'https://little-jesus-api-git-lj2020.min1.now.sh',
+  prod2021: 'https://little-jesus-api-git-main.min1.now.sh',
+  dev: 'https://little-jesus-api-git-develop.min1.now.sh',
   local: 'http://localhost:5050',
 }
 let BASEURL = url.dev
@@ -51,12 +39,20 @@ export function setApiServer() {
   if (window.location.host.includes('localhost')) {
     BASEURL = url.local
   }
-  if (['little-jesus.now.sh', 'little-jesus-admin.now.sh'].includes(window.location.host)) {
-    BASEURL = url.prod2019
+  if (
+    [
+      'little-jesus-code.now.sh',
+      'little-jesus-2020.now.sh',
+      'little-jesus-admin-2020.now.sh',
+    ].includes(window.location.host)
+  ) {
+    BASEURL = url.prod2020
   }
 
-  if (isProd()) {
-    BASEURL = url.prod2020
+  if (
+    ['little-jesus-2021.now.sh', 'little-jesus-admin-2021.now.sh'].includes(window.location.host)
+  ) {
+    BASEURL = url.prod2021
   }
 
   const queryParam = getQueryParams(window.location.href)
