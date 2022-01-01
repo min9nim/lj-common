@@ -51,9 +51,12 @@ export function setApiServer() {
       url.prod2020,
     ],
     [
-      ['little-jesus-2021.vercel.app', 'little-jesus-admin-2021.vercel.app'].includes(
-        window.location.host,
-      ),
+      [
+        'little-jesus.vercel.app',
+        'little-jesus-admin.vercel.app',
+        'little-jesus-2021.vercel.app',
+        'little-jesus-admin-2021.vercel.app',
+      ].includes(window.location.host),
       url.prod2021,
     ],
     [true, url.dev],
