@@ -26,7 +26,6 @@ export function initSentry(Vue) {
 }
 
 const url: any = {
-  prod2020: 'https://little-jesus-api-git-lj2020.min1.vercel.app',
   prod2021: 'https://little-jesus-api-git-main.min1.vercel.app',
   dev: 'https://little-jesus-api-git-develop.min1.vercel.app',
   local: 'http://localhost:5050',
@@ -42,14 +41,6 @@ export function setApiServer() {
   BASEURL = oneOf([
     [queryParam.api, url[queryParam.api]],
     [window.location.host.includes('localhost'), url.local],
-    [
-      [
-        'little-jesus-code.vercel.app',
-        'little-jesus-2020.vercel.app',
-        'little-jesus-admin-2020.vercel.app',
-      ].includes(window.location.host),
-      url.prod2020,
-    ],
     [
       [
         'little-jesus.vercel.app',
@@ -102,9 +93,9 @@ export const checkServerEnable = async url => {
 
 export function isProd() {
   const prodHosts = [
+    'little-jesus.vercel.app',
+    'little-jesus-admin.vercel.app',
     'little-jesus-code.vercel.app',
-    'little-jesus-2020.vercel.app',
-    'little-jesus-admin-2020.vercel.app',
     'little-jesus-2021.vercel.app',
     'little-jesus-admin-2021.vercel.app',
   ]
