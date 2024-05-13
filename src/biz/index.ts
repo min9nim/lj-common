@@ -1,11 +1,11 @@
 import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
-import createLogger from 'if-logger'
-import {getQueryParams, onlyOneInvoke, oneOf} from 'mingutils'
 import axios from 'axios'
-import {print} from 'graphql/language/printer'
 import gql from 'graphql-tag'
-import {qSchema} from './query'
+import { print } from 'graphql/language/printer'
+import createLogger from 'if-logger'
+import { getQueryParams, oneOf, onlyOneInvoke } from 'mingutils'
+import { qSchema } from './query'
 
 export const logger = createLogger().addTags('common')
 
@@ -20,12 +20,15 @@ export function initSentry(Vue) {
   logger.info('sentry-dsn:', VUE_APP_SENTRY_DSN)
   Sentry.init({
     dsn: VUE_APP_SENTRY_DSN,
-    integrations: [new Integrations.Vue({Vue, attachProps: true, logErrors: true})],
+    integrations: [
+      new Integrations.Vue({ Vue, attachProps: true, logErrors: true }),
+    ],
   })
   logger.addTags('initSentry').info('Sentry initialized')
 }
 
 const url: any = {
+  prod: 'https://little-jesus-api.m2n.site',
   prod2021: 'https://little-jesus-api-git-main.min1.vercel.app',
   dev: 'https://little-jesus-api-git-develop.min1.vercel.app',
   local: 'http://localhost:5050',
@@ -40,7 +43,9 @@ export function setApiServer() {
 
   BASEURL = oneOf([
     [queryParam.api, url[queryParam.api]],
-    [window.location.host.includes('localhost'), url.local],
+    [queryParam.url, queryParam.url],
+    [window.location.host === 'little-jesus.m2n.site', url.prod],
+    [(window.location.host.includes('localhost'), url.local)],
     [
       [
         'little-jesus.vercel.app',
@@ -60,12 +65,20 @@ let reqCount = 0
 
 export async function req(query: any, variables = {}) {
   await checkLocalServer()
-  const logger2 = logger.addTags('req', queryName(print(query)), String(reqCount))
+  const logger2 = logger.addTags(
+    'req',
+    queryName(print(query)),
+    String(reqCount),
+  )
   reqCount++
   logger2.verbose('start')
   logger2.verbose.time('end:')
-  let config = {headers: {'Content-Type': 'application/json'}}
-  const result = await axios.post(BASEURL, {query: print(query), variables}, config)
+  let config = { headers: { 'Content-Type': 'application/json' } }
+  const result = await axios.post(
+    BASEURL,
+    { query: print(query), variables },
+    config,
+  )
   logger2.verbose.timeEnd('end:')
   if (result.data.errors) {
     throw result.data.errors
@@ -88,7 +101,11 @@ export const checkLocalServer = onlyOneInvoke(async () => {
 })
 
 export const checkServerEnable = async url => {
-  await axios.post(url, {query: print(qSchema)}, {headers: {'Content-Type': 'application/json'}})
+  await axios.post(
+    url,
+    { query: print(qSchema) },
+    { headers: { 'Content-Type': 'application/json' } },
+  )
 }
 
 export function isProd() {
