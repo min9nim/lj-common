@@ -2,10 +2,10 @@ import * as Sentry from '@sentry/browser'
 import * as Integrations from '@sentry/integrations'
 import axios from 'axios'
 import gql from 'graphql-tag'
-import { print } from 'graphql/language/printer'
+import {print} from 'graphql/language/printer'
 import createLogger from 'if-logger'
-import { getQueryParams, oneOf, onlyOneInvoke } from 'mingutils'
-import { qSchema } from './query'
+import {getQueryParams, oneOf, onlyOneInvoke} from 'mingutils'
+import {qSchema} from './query'
 
 export const logger = createLogger().addTags('common')
 
@@ -20,9 +20,7 @@ export function initSentry(Vue) {
   logger.info('sentry-dsn:', VUE_APP_SENTRY_DSN)
   Sentry.init({
     dsn: VUE_APP_SENTRY_DSN,
-    integrations: [
-      new Integrations.Vue({ Vue, attachProps: true, logErrors: true }),
-    ],
+    integrations: [new Integrations.Vue({Vue, attachProps: true, logErrors: true})],
   })
   logger.addTags('initSentry').info('Sentry initialized')
 }
@@ -65,20 +63,12 @@ let reqCount = 0
 
 export async function req(query: any, variables = {}) {
   await checkLocalServer()
-  const logger2 = logger.addTags(
-    'req',
-    queryName(print(query)),
-    String(reqCount),
-  )
+  const logger2 = logger.addTags('req', queryName(print(query)), String(reqCount))
   reqCount++
   logger2.verbose('start')
   logger2.verbose.time('end:')
-  let config = { headers: { 'Content-Type': 'application/json' } }
-  const result = await axios.post(
-    BASEURL,
-    { query: print(query), variables },
-    config,
-  )
+  let config = {headers: {'Content-Type': 'application/json'}}
+  const result = await axios.post(BASEURL, {query: print(query), variables}, config)
   logger2.verbose.timeEnd('end:')
   if (result.data.errors) {
     throw result.data.errors
@@ -101,11 +91,7 @@ export const checkLocalServer = onlyOneInvoke(async () => {
 })
 
 export const checkServerEnable = async url => {
-  await axios.post(
-    url,
-    { query: print(qSchema) },
-    { headers: { 'Content-Type': 'application/json' } },
-  )
+  await axios.post(url, {query: print(qSchema)}, {headers: {'Content-Type': 'application/json'}})
 }
 
 export function isProd() {

@@ -74,7 +74,7 @@ export default {
   color: #2c3e50;
 }
 </style>
-<style lang="stylus" >
+<style lang="stylus">
 #nav {
   // text-align: center;
   a {
