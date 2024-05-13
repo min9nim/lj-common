@@ -1,6 +1,6 @@
 {
   "name": "@mgsong/lj-common",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "main": "dist/lj.common.js",
   "author": "min9nim@gmail.com",
   "license": "MIT",
